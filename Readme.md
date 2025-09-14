@@ -1,170 +1,130 @@
-# Library Management System
+# 📚 Mugdho Library Management System
 
-This is a simple library management system built for Major Project 2021 by Abhik Bhattacharya (id : 181001102058) & Saikat Shee (id : 181001102053 )
+**Author / Developer:** Sharat Acharjee Mugdho  
+**Portfolio:** [https://mugdho-portfolio.netlify.app](https://mugdho-portfolio.netlify.app)  
+**GitHub:** [https://github.com/Sharatpsd](https://github.com/Sharatpsd)  
 
-<!-- ### It is deployed [here](https://abhik-b.github.io/pomodro-timer/) -->
+This is a professional library management system built for academic and portfolio purposes. It demonstrates **Django, Django REST Framework, and Python backend skills**, along with **user authentication, CRUD operations, and fine management**.
+## 📖 Screenshots
 
-This project is built with :
+### Figure 1: Books List Grid View
+![Books List Grid View](https://drive.google.com/uc?export=view&id=1rg5FMsyxXoTz_PI2hevhqO8eeiR9tRb5)
 
-![HTML5](https://www.w3.org/html/logo/downloads/HTML5_Logo_64.png) , ![CSS3](https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/CSS3_logo_and_wordmark.svg/48px-CSS3_logo_and_wordmark.svg.png) , ![Vanilla JS](https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/64px-Unofficial_JavaScript_logo_2.svg.png) , ![Python](https://www.quintagroup.com/++theme++quintagroup-theme/images/logo_python_section.png) , ![Django](https://www.quintagroup.com/++theme++quintagroup-theme/images/logo_django_section.png) ,
-<img alt="Tailwind CSS" width="350" src="https://refactoringui.nyc3.cdn.digitaloceanspaces.com/tailwind-logo.svg" />
+### Figure 2: Books List Grouped View
+![Books List Grouped View](https://drive.google.com/uc?export=view&id=10pbwq5bLl4ZB3OIAnlWGuWDVakxfF5IK)
 
----
+### Figure 3: Books List with Diverse Authors
+![Books List with Diverse Authors](https://drive.google.com/uc?export=view&id=1p1piQVbaJ-ZWjqfM3Kp-EH-yfevZGM6s)
 
-## Features of this project:
-
-##### Anyone can
-
-1. see all the books in homepage
-2. search books based on author or name of the book or category of the book
-3. sort books or author alphabetically
-
-##### Student can
-
-1.  login / signup ,
-2.  can request book
-3.  see their own issues and filter them based on :
-
-    - requested issues ,
-    - issued books or
-    - all of them together
-
-4.  check their own fines
-5.  can see
-
-    - the days remaining to return a particular book
-      **or**
-    - the number of days passed the return date of a particular book in the my fines page
-
-6.  Pay their fines online (powered by RazorPay)
-
-##### Admin can
-
-1.  login to admin dashboard
-2.  check all issues :
-
-    - see issues ,
-    - delete issues ,
-    - search issues by studentid
-    - filter issues based on :
-
-      - issued or not,
-      - returned or not ,
-
-3.  accept a issue :
-
-    - from the dashboard where admin has to manually select return date
-      **or**
-    - from the Issue requests page where return date is automatically calculated
-
-4.  add , delete search books and filter books based on author
-5.  add , delete , search author
-6.  calculate fine by clicking a button ,
-7.  create, delete fine ,search fines for studentid
-8.  toggle fine paid status (if paid in cash)
-9.  search ,modify,add,delete students , filter them based on department and check all fines and issues of that student
-10. can see the last-login , date joined & the student associated to a particular user
-11. can change password for any user
-
-##### More ...
-
-1. while signing up if studentID is already associated to a user in this platform then it will show a error without reloading the page and as soon as correct id is given then the error will go away
-2. Books in homepage will show status of `issued` , `issue requested` or `request issue` based on whether the book is issued or requested for a issue or is not requested for logged-in students only
+### Figure 4: Admin Dashboard - All Issues
+![Admin Dashboard - All Issues](https://drive.google.com/uc?export=view&id=14HZlt2qmiTLuHPbgBZ2LzR5m77BYUocq)
 
 ---
 
-## Behind the scenes
-
-### Student app
-
-We need this for writing our authentication views as well as student & department models. Student model has the first+last name ,department foreignkey and studentID which is one-to-one field to Django' User model. We use Django's User Model for authentication . There will be 3 views: login,signup and logout. The urls will have `/student/< login or signup or logout >/`.
-
-### Library app
-
-This is our main app where we will write our library system's main logic. It comprises of 4 models:
-
-- **Author** - for storing name & description of author
-- **Book** - for storing name , image ,category of a book & connecting to the author
-- **Issue** - for tracking each & every issue a student requests. It will also track the book for which issue is requested , issue status (whether issued or not) , return status (whether returned or not) , return date (last date to return the book) and more...
-- **Fine** - for tracking the fines & calculating fines automatically for each student whose issued book/s is/are not returned and the last date is passed
+## 🔧 Technologies Used
+- **Frontend:** HTML5, CSS3, Tailwind CSS, Vanilla JavaScript  
+- **Backend:** Python, Django, Django REST Framework (DRF)  
+- **Database:** SQLite (default, can switch to PostgreSQL)  
+- **Payment Integration:** RazorPay  
+- **Deployment:** Can be deployed on Render, Railway, Heroku, or any cloud hosting  
 
 ---
 
-## Some important logics :
+## 🚀 Features
 
-**Student ID** - Username of Django's User Model serves as our studentID
+### General
+1. Browse all books
+2. Search and filter by author, book name, or category
+3. Sort books/authors alphabetically
 
-**Signing Up** - so every student who signs up creates a new user instance with his/her student id as the username and then a student instance is also created with the names and department and this user we just created.
+### Student Features
+1. Signup/Login  
+2. Request and view book issues  
+3. Check fines and overdue books  
+4. Pay fines online through RazorPay  
+5. View remaining days to return books or overdue duration  
 
-**Calculating Fine - How ??** -
-We run a for loop and pass all the issues to this calculate fine function. Then:
+### Admin Features
+1. Login to admin dashboard  
+2. Manage books and authors (add, delete, search, filter)  
+3. Manage student accounts and their issues/fines  
+4. Accept or reject book issue requests  
+5. Calculate fines automatically or manually  
+6. Toggle fine paid status  
 
-- for each issue , check whether the issue is issued or not (if issue is not issued then no need to calculate fines)
+### Additional Features
+- Student signup validates unique student ID  
+- Book availability shows status (`issued`, `issue requested`, or `request issue`)  
 
-  - if issue is issued then check whether issue is returned or not (if issue is returned then no need to calculate fines)
+---
 
-    - if issue is not returned then check whether the issue's return date is passed or not (if not passed then no calculation of fines is needed)
-      - create or get a fine instance with student & issue then calculate the amount and save it to the amount field
+## 📂 Project Structure (Summary)
+django-library-management/
+│
+├─ core/ # Project settings
+├─ library/ # Library app (models, views)
+├─ student/ # Student app (authentication)
+├─ templates/ # HTML templates
+├─ static/ # CSS/JS files
+├─ manage.py
+└─ README.md
 
-**Calculating Fine - When ??** -
+yaml
+Copy code
 
-- Whenever admin clicks on "_Calculate Fine_" button
-- Whenever a student opens his "_My Fines_" page
+---
 
-**Payment of Fines**
 
-- when a student clicks on pay button (in myfines page)
-- we create a razorpay order with a dict containing fine amount (coverted to int and multiplied by 100 because razorpay wants in paisa) , order_id, currency
-- then we send the user to the payfines page (payfines.html) with the amount (in paisa ) , razorpay key id, razorpay order id & amount (which should be displayed)
-- user chooses proceed to payment online , selects paymode (Netbanking , Card , Wallet etc.) and pays the amount
-- we verify the payment status whether success or failure
-- then payment is (successfull/failure) message is shown on myfine page with (paid status / pay button) beside that fine
+---
 
-## Screenshots
+## ⚙️ How to Run Locally
+1. Clone the repository:  
+```bash
+git clone https://github.com/Sharatpsd/Mugdho-Library.git
+Create virtual environment & activate:
 
-- Signup Page
-  ![login](./screenshots/signup.png)
-- Login Page
-  ![login](./screenshots/login.png)
-- If Student ID already signed up
-  ![signup](./screenshots/signup-same-id.png)
+bash
+Copy code
+python -m venv .venv
+.\.venv\Scripts\activate   # Windows
+source .venv/bin/activate  # Mac/Linux
+Install dependencies:
 
-- Home Page for student
-  ![homepage](./screenshots/homepage-student.png)
-- Search Book
-  ![search-book](./screenshots/search-book.png)
-- Search Author
-  ![search-author](./screenshots/search-author.png)
+bash
+Copy code
+pip install -r requirements.txt
+Create .env file and add:
 
-- My Issues
-  ![myissues](./screenshots/myissues.png)
-- My Fines
-  ![myfines](./screenshots/myfines.png)
-- Confirm Payment
-  ![paymentmode](./screenshots/confirmpayment.png)
-- Choose Payment Modes
-  ![paymentmode](./screenshots/choospaymode.png)
-- Pay Success
-  ![paymentmode](./screenshots/paysuccess.png)
+ini
+Copy code
+SECRET_KEY=<your_secret_key>
+RAZORPAY_KEY_ID=<your_razorpay_id>
+RAZORPAY_KEY_SECRET=<your_razorpay_secret>
+Run migrations:
 
-- Admin Dashboard
-  ![admin](./screenshots/admin-dashboard-home.png)
+bash
+Copy code
+python manage.py migrate
+Create superuser for admin:
 
-- All Books (Admin)
-  ![allbooks](./screenshots/allbooks.png)
+bash
+Copy code
+python manage.py createsuperuser
+Run server:
 
-- All issues , can be filtered ,searched (Admin)
-  ![allissues](./screenshots/all-issues.png)
-- Requested Issues (Admin)
-  ![allissues](./screenshots/issue-requests.png)
+bash
+Copy code
+python manage.py runserver
+Visit http://127.0.0.1:8000/
 
-- All fines , can be filtered ,searched (Admin)
-  ![allfines](./screenshots/allfines.png)
+💡 Important Logic
+Student ID: Django User username
 
-- All Students , can be filtered ,searched (Admin)
-  ![allstudents](./screenshots/all-students.png)
-- Student Details (Admin)
-  ![student-details](./screenshots/student-details.png)
-- User Details (Admin)
-  ![student-details](./screenshots/user-details.png)
-  19
+Sign Up: Creates User + Student instance
+
+Calculate Fine: Checks issued books, return status, overdue, updates Fine model
+
+Payment: RazorPay integration handles online payment and updates status
+
+Made with ❤️ by Sharat Acharjee Mugdho
+Portfolio: https://mugdho-portfolio.netlify.app | GitHub: https://github.com/Sharatpsd
